@@ -29,14 +29,13 @@
 
                         <div class="post-additional-info">
 
-                            {{-- <div class="post__author author vcard">
-                                Posted by
-
+                            <div class="post__author author vcard">
+                            <i class="fa fa-user"></i>
                                 <div class="post__author-name fn">
-                                    <a href="#" class="post__author-link">admin</a>
+                                    <a href="#" class="post__author-link">{{$post->user->name}}</a>
                                 </div>
 
-                            </div> --}}
+                            </div>
 
                             <span class="post__date">
 
@@ -67,7 +66,7 @@
                                 <a href="javascript:;" onclick="likePost({{ $post->id }})" class="like-text">
                                     @if(Auth::check())
                                     @if($post->checkLike(Auth::user()->id))
-                                    <i class="fa fa-heart fa-2x" style="color: red"></i>&nbsp;<a href="javascript:;" class="all_likes" onclick="showLikes({{ $post->id }})"><span>{{ $post->getLikeCount() }} @if($post->getLikeCount() > 1){{ 'likes' }}@else{{ 'like' }}@endif</span></a>        bmgvjutf75r68yf8t6f6fffffffffffffffffffffffffffffffffffffffffft68r
+                                    <i class="fa fa-heart fa-2x" style="color: red"></i>&nbsp;<a href="javascript:;" class="all_likes" onclick="showLikes({{ $post->id }})"><span>{{ $post->getLikeCount() }} @if($post->getLikeCount() > 1){{ 'likes' }}@else{{ 'like' }}@endif</span></a>
                                     @else
                                     <i class="fa fa-heart-o fa-2x"></i> &nbsp;<a href="javascript:;" class="all_likes" onclick="showLikes({{ $post->id }})"><span>{{ $post->getLikeCount() }} @if($post->getLikeCount() > 1){{ 'likes' }}@else{{ 'like' }}@endif</span></a>
                                     @endif
@@ -99,9 +98,13 @@
                 <div class="blog-details-author">
 
                     <div class="blog-details-author-thumb">
+                    @if($post->user->admin)
                         <img width="120" height="120" src="{{ asset($post->user->profile->avatar) }}" alt="Author">
+                    @else
+                    <img width="120" height="120" src="{{ asset('/uploads/avatars/1.png') }}" alt="">
+                    @endif
                     </div>
-
+                    @if($post->user->admin)
                     <div class="blog-details-author-content">
                         <div class="author-info">
                             <h5 class="author-name">{{$post->user->name}}</h5>
@@ -128,6 +131,7 @@
 
                         </div>
                     </div>
+                    @endif
                 </div>
 
                 <div class="pagination-arrow">

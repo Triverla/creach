@@ -83,7 +83,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                    {{ $posts[0]->created_at->toFormattedDateString() }}
+                                                {{ $posts[0]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -92,6 +92,11 @@
                                                 <i class="seoicon-tags"></i>
                                                 <a
                                                     href="{{ route('category.single', ['id' => $posts[0]->category->id ]) }}">{{ $posts[0]->category->name }}</a>
+                                            </span>
+
+                                            <span class="post__comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                                {{$posts[0]->getCommentCount()}}
                                             </span>
 
                                         </div>
@@ -135,7 +140,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                    {{ $posts[1]->created_at->toFormattedDateString() }}
+                                                {{ $posts[1]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -144,6 +149,11 @@
                                                 <i class="seoicon-tags"></i>
                                                 <a
                                                     href="{{ route('category.single', ['id' => $posts[1]->category->id ]) }}">{{ $posts[1]->category->name }}</a>
+                                            </span>
+
+                                            <span class="post__comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                                {{$posts[1]->getCommentCount()}}
                                             </span>
                                         </div>
                                     </div>
@@ -183,7 +193,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                    {{ $posts[2]->created_at->toFormattedDateString() }}
+                                                    {{ $posts[2]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -196,7 +206,7 @@
 
                                             <span class="post__comments">
                                                 <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                                6
+                                                {{$posts[2]->getCommentCount()}}
                                             </span>
 
                                         </div>
@@ -239,7 +249,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                    {{ $posts[3]->created_at->toFormattedDateString() }}
+                                                {{ $posts[3]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -248,6 +258,11 @@
                                                 <i class="seoicon-tags"></i>
                                                 <a
                                                     href="{{ route('category.single', ['id' => $posts[3]->category->id ]) }}">{{ $posts[3]->category->name }}</a>
+                                            </span>
+
+                                            <span class="post__comments">
+                                                <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                                {{$posts[3]->getCommentCount()}}
                                             </span>
                                         </div>
                                     </div>
@@ -287,7 +302,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                    {{ $posts[4]->created_at->toFormattedDateString() }}
+                                                {{ $posts[4]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -300,7 +315,7 @@
 
                                             <span class="post__comments">
                                                 <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                                6
+                                                {{$posts[4]->getCommentCount()}}
                                             </span>
 
                                         </div>

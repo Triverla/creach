@@ -25,7 +25,11 @@
 
 		              <tr>
 		              	<td>
+						  @if($user->admin)
 		              		<img style="width: 60px;height: 60px;border-radius: 50%;" src="{{ asset($user->profile->avatar) }}" alt="">
+							  @else
+							  <img style="width: 60px;height: 60px;border-radius: 50%;" src="{{ asset('/uploads/avatars/1.png') }}" alt="">
+						@endif
 		              	</td>
 		              	  <td>
 		              	  	{{ $user->name }}

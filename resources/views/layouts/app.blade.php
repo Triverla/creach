@@ -151,7 +151,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
-    <script src="/vendor/tinymce/tinymce.min.js"></script>
+    <script src="{{ asset('/vendor/tinymce/tinymce.min.js') }}"></script>
 
     <script>
         @if(Session::has('success'))
