@@ -1,9 +1,5 @@
 @extends('layouts.frontend')
 
-
-
-
-
 @section('content')
 
 
@@ -16,8 +12,8 @@
 
 <div class="container">
     <div class="row medium-padding120">
-        <main class="main" id="blog-{{ $post->id}}">
-            <div class="col-lg-10 col-lg-offset-1">
+        <main class="main">
+            <div class="col-lg-10 col-lg-offset-1" id="blog-{{ $post->id}}">
                 <article class="hentry post post-standard-details">
 
                     <div class="post-thumb">
@@ -42,7 +38,7 @@
                                 <i class="seoicon-clock"></i>
 
                                 <time class="published" datetime="2016-03-20 12:00:00">
-                                    {{$post->created_at->toFormattedDateString() }}
+                                    {{$post->created_at->diffForHumans() }}
                                 </time>
 
                             </span>
@@ -163,7 +159,7 @@
                 </div>
 
 
-                <div class="comments">
+                <div id="blog-{{ $post->id}}" class="comments">
 
                     <div class="heading text-center">
                         <h4 class="h1 heading-title">Comments</h4>
@@ -176,14 +172,12 @@
                         @include('includes.comments_title')
                     </div>
                     <div class="post-comments">
-
                         @foreach($post->comments()->limit(4)->orderBY('id', 'DESC')->with('user')->get()->reverse() as $comment)
 
                         @include('includes.single_comment')
 
 
                         @endforeach
-
                     </div>
 
 

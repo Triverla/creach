@@ -7,7 +7,11 @@
                 </div>
                 <div class="comments__header">
                     <div class="comments__author">
-                        <a href="">{{$comment->user->name }}</a>
+                        @if($comment->name == NULL)
+                    <a href="">{{$comment->getUsername()}}</a>
+                        @else
+                        <a href="">{{$comment->name }}</a>
+                        @endif
                     </div>
                     <div class="comments__time">
                         {{ $comment->created_at->diffForHumans() }}

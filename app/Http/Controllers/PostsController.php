@@ -11,6 +11,7 @@ use App\Post;
 use App\PostLike;
 use Response;
 use Illuminate\Support\Facades\DB;
+use View;
 
 
 use Illuminate\Http\Request;
@@ -242,17 +243,36 @@ class PostsController extends Controller
 
     public function comment(Request $request)
     {
-
         $user = Auth::user();
-
         $response = array();
         $response['code'] = 400;
 
-        $post = Post::find($request->input('id'));
-        $text = $request->input('comment');
+        
+        if(Auth::guest()){
         $name = $request->input('name');
         $email = $request->input('email');
+        $post = Post::find($request->input('id'));
+        $text = $request->input('comment');
 
+        if ($post && !empty($text)) {
+
+            $comment = new Comments();
+            $comment->post_id = $post->id;
+            $comment->user_id = null;
+            $comment->comment = $text;
+            $comment->name = $name;//'User'.rand(999,9999);
+            $comment->email = $email;
+            if ($comment->save()) {
+                $response['code'] = 200;
+                $html = View::make('single', compact('post', 'comment'));
+                $response['comment'] = $html->render();
+                $html = View::make('includes.comments_title', compact('post', 'comment'));
+                $response['comments_title'] = $html->render();
+            }
+        }
+    }else{
+        $post = Post::find($request->input('id'));
+        $text = $request->input('comment');
 
         if ($post && !empty($text)) {
 
@@ -265,8 +285,8 @@ class PostsController extends Controller
                 $comment->user_id = null;
             }
             $comment->comment = $text;
-            $comment->name = $name;
-            $comment->email = $email;
+            $comment->name = Auth::user()->name;
+            $comment->email = Auth::user()->email;
             if ($comment->save()) {
                 $response['code'] = 200;
                 $html = View::make('single', compact('post', 'comment'));
@@ -275,6 +295,7 @@ class PostsController extends Controller
                 $response['comments_title'] = $html->render();
             }
         }
+    }      
 
         return Response::json($response);
     }
