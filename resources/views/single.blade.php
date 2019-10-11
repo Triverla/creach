@@ -180,10 +180,7 @@
                         @endforeach
                     </div>
 
-
                     @include('includes.comment-form')
-
-
 
                 </div>
 

@@ -64,7 +64,7 @@ function submitComment(id) {
             processData: false,
             headers: { 'X-CSRF-TOKEN': CSRF },
             success: function(response) {
-                if (response.code == 500) {
+                if (response.code == 200) {
                     $('#blog-' + id + ' #form-new-comment textarea').val("");
                     $('#blog-' + id + ' .comments .comments-title').html(response.comments_title);
                     $('#blog-' + id + ' .comments .post-comments').append(response.comment);

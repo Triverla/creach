@@ -3,7 +3,11 @@
         <div class="comments__article">
             <div class="comment__content">
                 <div class="comments__avatar">
-                    <img class="img-responsive avatar" width="50" height="50" src="{{ asset($post->user->profile->avatar) }}" alt="Author">
+                    @if($comment->user_id == null)
+                    <img class="img-responsive avatar" width="50" height="50" src="{{ asset('/app/img/11.png') }}" alt="Author">
+                    @else
+                    <img class="img-responsive avatar" width="50" height="50" src="{{ asset('/app/img/avatar2.png') }}" alt="Author">
+                    @endif
                 </div>
                 <div class="comments__header">
                     <div class="comments__author">
