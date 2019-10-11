@@ -6,21 +6,21 @@
     <title>{{ $title }}</title>
 
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/fonts.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/app.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/crumina-fonts.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/normalize.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/grid.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/toastr.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/crumina-fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/grid.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 
     <!--Plugins styles-->
     <!--TODO css not working-->
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/jquery.mCustomScrollbar.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/swiper.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/primary-menu.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/app/css/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/swiper.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/primary-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app/css/magnific-popup.css') }}">
      
 
     <!--Styles for RTL-->
@@ -150,18 +150,18 @@
     var CSRF = "{{ csrf_token() }}";
 </script>
 
-<script src="{{ asset('public/app/js/jquery-2.1.4.min.js') }}"></script>
-<script src="{{ asset('public/app/js/crum-mega-menu.js') }}"></script>
-<script src="{{ asset('public/app/js/swiper.jquery.min.js') }}"></script>
-<script src="{{ asset('public/app/js/theme-plugins.js') }}"></script>
-<script src="{{ asset('public/app/js/main.js') }}"></script>
-<script src="{{ asset('public/app/js/form-actions.js') }}"></script>
-<script src="{{ asset('public/app/js/posts.js') }}"></script>
-<script src="{{ asset('public/js/toastr.min.js') }}"></script>
+<script src="{{ asset('app/js/jquery-2.1.4.min.js') }}"></script>
+<script src="{{ asset('app/js/crum-mega-menu.js') }}"></script>
+<script src="{{ asset('app/js/swiper.jquery.min.js') }}"></script>
+<script src="{{ asset('app/js/theme-plugins.js') }}"></script>
+<script src="{{ asset('app/js/main.js') }}"></script>
+<script src="{{ asset('app/js/form-actions.js') }}"></script>
+<script src="{{ asset('app/js/posts.js') }}"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
 
-<script src="{{ asset('public/app/js/velocity.min.js') }}"></script>
-<script src="{{ asset('public/app/js/ScrollMagic.min.js') }}"></script>
-<script src="{{ asset('public/app/js/animation.velocity.min.js') }}"></script>
+<script src="{{ asset('app/js/velocity.min.js') }}"></script>
+<script src="{{ asset('app/js/ScrollMagic.min.js') }}"></script>
+<script src="{{ asset('app/js/animation.velocity.min.js') }}"></script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a032563054ef400"></script> 
