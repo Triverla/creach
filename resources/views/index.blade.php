@@ -29,13 +29,13 @@
 
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <style>
-    .padded-50 {
-        padding: 40px;
-    }
-
-    .text-center {
-        text-align: center;
-    }
+        .padded-50 {
+            padding: 40px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
     </style>
 
 </head>
@@ -72,8 +72,7 @@
                                     <div class="post__content-info">
 
                                         <h2 class="post__title entry-title text-center">
-                                            <a
-                                                href="{{ route('post.single', ['slug' => $posts[0]->slug ]) }}">{{ $posts[0]->title }}</a>
+                                            <a href="{{ route('post.single', ['slug' => $posts[0]->slug ]) }}">{{ $posts[0]->title }}</a>
                                         </h2>
 
                                         <div class="post-additional-info">
@@ -83,7 +82,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                {{ $posts[0]->created_at->diffForHumans() }}
+                                                    {{ $posts[0]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -129,8 +128,7 @@
                                     <div class="post__content-info">
 
                                         <h2 class="post__title entry-title text-center">
-                                            <a
-                                                href="{{ route('post.single', ['slug' => $posts[1]->slug ]) }}">{{ $posts[1]->title }}</a>
+                                            <a href="{{ route('post.single', ['slug' => $posts[1]->slug ]) }}">{{ $posts[1]->title }}</a>
                                         </h2>
 
                                         <div class="post-additional-info">
@@ -140,7 +138,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                {{ $posts[1]->created_at->diffForHumans() }}
+                                                    {{ $posts[1]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -161,8 +159,7 @@
 
                             </article>
                         </div>
-                        @endisset
-                        @isset($posts[2])
+                        @endisset @isset($posts[2])
                         <div class="col-lg-6">
                             <article class="hentry post post-standard has-post-thumbnail sticky">
 
@@ -182,8 +179,7 @@
                                     <div class="post__content-info">
 
                                         <h2 class="post__title entry-title text-center">
-                                            <a
-                                                href="{{ route('post.single', ['slug' => $posts[2]->slug ]) }}">{{ $posts[2]->title }}</a>
+                                            <a href="{{ route('post.single', ['slug' => $posts[2]->slug ]) }}">{{ $posts[2]->title }}</a>
                                         </h2>
 
                                         <div class="post-additional-info">
@@ -238,8 +234,7 @@
                                     <div class="post__content-info">
 
                                         <h2 class="post__title entry-title text-center">
-                                            <a
-                                                href="{{ route('post.single', ['slug' => $posts[3]->slug ]) }}">{{ $posts[3]->title }}</a>
+                                            <a href="{{ route('post.single', ['slug' => $posts[3]->slug ]) }}">{{ $posts[3]->title }}</a>
                                         </h2>
 
                                         <div class="post-additional-info">
@@ -249,7 +244,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                {{ $posts[3]->created_at->diffForHumans() }}
+                                                    {{ $posts[3]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -270,8 +265,7 @@
 
                             </article>
                         </div>
-                        @endisset
-                        @isset($posts[4])
+                        @endisset @isset($posts[4])
                         <div class="col-lg-6">
                             <article class="hentry post post-standard has-post-thumbnail sticky">
 
@@ -291,8 +285,7 @@
                                     <div class="post__content-info">
 
                                         <h2 class="post__title entry-title text-center">
-                                            <a
-                                                href="{{ route('post.single', ['slug' => $posts[4]->slug ]) }}">{{ $posts[4]->title }}</a>
+                                            <a href="{{ route('post.single', ['slug' => $posts[4]->slug ]) }}">{{ $posts[4]->title }}</a>
                                         </h2>
 
                                         <div class="post-additional-info">
@@ -302,7 +295,7 @@
                                                 <i class="seoicon-clock"></i>
 
                                                 <time class="published" datetime="2016-04-17 12:00:00">
-                                                {{ $posts[4]->created_at->diffForHumans() }}
+                                                    {{ $posts[4]->created_at->diffForHumans() }}
                                                 </time>
 
                                             </span>
@@ -329,45 +322,40 @@
                 </div>
 
                 <div class="col-lg-4">
-                    @isset($categories[0])
-                    @isset($categories[1])
+                    @isset($categories[0]) @isset($categories[1])
                     <div class="container-fluid">
                         <div class="row bg-border-color">
                             <div class="container-fluid">
                                 <div class="col-lg-12">
                                     <div class="offers">
-                                        <h3>-- Top categories --</h3>
+                                        <h5>-- Top categories --</h5>
                                         <hr>
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="heading">
-                                                    <h4 class="h4 heading-title">{{ $categories[1]->name }}</h4>
-                                                    <div class="heading-line">
-                                                        <span class="short-line"></span>
-                                                        <span class="long-line"></span>
-                                                    </div>
+                                                    <h4 class="h6 heading-title"><b>{{ $categories[1]->name }}</b></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="case-item-wrap">
-                                                @foreach($categories[1]->posts()->orderBy('created_at',
-                                                'desc')->take(-1)->get() as $post)
-                                                <div class="">
-                                                    <div class="case-item">
+                                        @foreach($categories[1]->posts()->orderBy('created_at', 'desc')->take(-1)->get() as $post)
+                                        <div class="panel case-item-wrap">
+                                            <div class="case-item">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
                                                         <div class="case-item__thumb">
-                                                            <img src="{{ $post->featured }}" alt="our case">
+                                                            <img class="img-responsive" src="{{ $post->featured }}" alt="our case">
                                                         </div>
-                                                        <h6 class="case-item__title text-center"><a
-                                                                href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <h6 class="case-item__title text-center"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
                                                         </h6>
                                                     </div>
                                                 </div>
-                                                @endforeach
                                             </div>
+                                            @endforeach
+
                                         </div>
                                     </div>
-                                    <div class="padded-50"></div>
                                     <div class="offers">
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -380,38 +368,37 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="case-item-wrap">
-                                                @foreach($categories[0]->posts()->orderBy('created_at',
-                                                'desc')->take(-1)->get() as $post)
-                                                <div class="">
-                                                    <div class="case-item">
+                                        @foreach($categories[0]->posts()->orderBy('created_at', 'desc')->take(-1)->get() as $post)
+                                        <div class="panel case-item-wrap">
+                                            <div class="case-item">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
                                                         <div class="case-item__thumb">
-                                                            <img src="{{ $post->featured }}" alt="our case">
+                                                            <img class="img-responsive" src="{{ $post->featured }}" alt="our case">
                                                         </div>
-                                                        <h6 class="case-item__title text-center"><a
-                                                                href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <h6 class="case-item__title text-center"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
                                                         </h6>
                                                     </div>
                                                 </div>
-                                                @endforeach
                                             </div>
                                         </div>
+                                        @endforeach
+
+                                        <div class="padded-50"></div>
                                     </div>
-                                    <div class="padded-50"></div>
                                 </div>
                             </div>
                         </div>
+                        @endisset @endisset
                     </div>
-                    @endisset
-                    @endisset
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <!-- End Subscribe Form -->
+        <!-- End Subscribe Form -->
     </div>
     @include('includes.form')
 
@@ -484,9 +471,9 @@
 
     <!-- ...end JS Script -->
     <script>
-    @if(Session::has('subscribed'))
-    toastr.success("{{ Session::get('subscribed') }}")
-    @endif
+        @if(Session::has('subscribed'))
+        toastr.success("{{ Session::get('subscribed') }}")
+        @endif
     </script>
 
 </body>

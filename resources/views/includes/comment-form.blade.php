@@ -10,10 +10,10 @@
             @if(!Auth::check())
             <div class="row">
                 <div class="col-md-4">
-                    <input style="border-radius: 5px; border-color: aquamarine" type="text" class="form-control" name="name" placeholder="Full Name" />
+                    <input id="name" style="border-radius: 5px; border-color: aquamarine" type="text" class="form-control" name="name" placeholder="Full Name" required/>
                 </div>
                 <div class="col-md-8">
-                    <input style="border-radius: 5px; border-color: aquamarine" type="text" class="form-control" name="email" placeholder="Email Address" />
+                    <input id="email" style="border-radius: 5px; border-color: aquamarine" type="text" class="form-control" name="email" placeholder="Email Address" required/>
                 </div>
             </div>
             @endif
