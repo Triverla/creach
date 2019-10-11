@@ -12,8 +12,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('public/css/toastr.min.css') }}">
 
     @yield('styles')
 </head>
@@ -149,9 +149,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
-    <script src="{{ asset('/vendor/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="{{ asset('public/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('public/vendor/tinymce/tinymce.min.js') }}"></script>
 
     <script>
         @if(Session::has('success'))
