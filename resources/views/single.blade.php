@@ -62,9 +62,9 @@
                                 <a href="javascript:;" onclick="likePost({{ $post->id }})" class="like-text">
                                     @if(Auth::check())
                                     @if($post->checkLike(Auth::user()->id))
-                                    <i class="fa fa-heart fa-2x" style="color: red"></i>&nbsp;<a href="javascript:;" class="all_likes" onclick="showLikes({{ $post->id }})"><span>{{ $post->getLikeCount() }} @if($post->getLikeCount() > 1){{ 'likes' }}@else{{ 'like' }}@endif</span></a>
+                                    <i class="fa fa-heart fa-2x" style="color: red"></i>&nbsp;<a href="javascript:;" id="lk" class="all_likes" onclick="showLikes({{ $post->id }})"><span>{{ $post->getLikeCount() }} @if($post->getLikeCount() > 1){{ 'likes' }}@else{{ 'like' }}@endif</span></a>
                                     @else
-                                    <i class="fa fa-heart-o fa-2x"></i> &nbsp;<a href="javascript:;" class="all_likes" onclick="showLikes({{ $post->id }})"><span>{{ $post->getLikeCount() }} @if($post->getLikeCount() > 1){{ 'likes' }}@else{{ 'like' }}@endif</span></a>
+                                    <i class="fa fa-heart-o fa-2x"></i> &nbsp;<a href="javascript:;" id="lk" class="all_likes" onclick="showLikes({{ $post->id }})"><span>{{ $post->getLikeCount() }} @if($post->getLikeCount() > 1){{ 'likes' }}@else{{ 'like' }}@endif</span></a>
                                     @endif
                                     @else
                                     <a href="{{url('/login')}}" class="like-text">
