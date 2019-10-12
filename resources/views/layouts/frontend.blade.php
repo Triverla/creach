@@ -149,6 +149,20 @@
     var REQUEST_URL = "<?=Request::url()?>";
     var CSRF = "{{ csrf_token() }}";
 </script>
+<script type="text/javascript">
+    // Initialize the service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js', {
+            scope: '.' 
+        }).then(function (registration) {
+            // Registration was successful
+            console.log('CREACH PWA: ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('CREACH PWA: ServiceWorker registration failed: ', err);
+        });
+    }
+</script>
 
 <script src="{{ asset('app/js/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('app/js/crum-mega-menu.js') }}"></script>
