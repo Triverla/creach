@@ -322,22 +322,27 @@
                 </div>
 
                 <div class="col-lg-4">
-                    @isset($categories[0]) @isset($categories[1])
+                    <?php $rn = rand(0,5); ?>
+                    <?php $rn1 = rand(0,5); ?>
+                    @isset($categories[0]) @isset($categories[$rn])
                     <div class="container-fluid">
                         <div class="row bg-border-color">
                             <div class="container-fluid">
                                 <div class="col-lg-12">
                                     <div class="offers">
-                                        <h5>-- Top categories --</h5>
+                                        <h5>-- Popular categories --</h5>
                                         <hr>
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="heading">
-                                                    <h4 class="h6 heading-title"><b>{{ $categories[1]->name }}</b></h6>
-                                                </div>
+                                                    <h4 class="h6 heading-title"><b>{{ $categories[$rn]->name }}</b></h6>
+                                                        <div class="heading-line">
+                                                            <hr>
+                                                        </div>
+                                                    </div>
                                             </div>
                                         </div>
-                                        @foreach($categories[1]->posts()->orderBy('created_at', 'desc')->take(-1)->get() as $post)
+                                        @foreach($categories[$rn]->posts()->orderBy('created_at', 'desc')->take(-1)->get() as $post)
                                         <div class="panel case-item-wrap">
                                             <div class="case-item">
                                                 <div class="row">
@@ -347,7 +352,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <h6 class="case-item__title text-center"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
+                                                        <h6 class=" text-center"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
                                                         </h6>
                                                     </div>
                                                 </div>
@@ -356,19 +361,19 @@
 
                                         </div>
                                     </div>
+                                    
                                     <div class="offers">
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="heading">
-                                                    <h4 class="h4 heading-title">{{ $categories[0]->name }}</h4>
+                                                    <h5 class="h5 heading-title">{{ $categories[$rn1]->name }}</h5>
                                                     <div class="heading-line">
-                                                        <span class="short-line"></span>
-                                                        <span class="long-line"></span>
+                                                        <hr>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @foreach($categories[0]->posts()->orderBy('created_at', 'desc')->take(-1)->get() as $post)
+                                        @foreach($categories[$rn1]->posts()->orderBy('created_at', 'desc')->take(-1)->get() as $post)
                                         <div class="panel case-item-wrap">
                                             <div class="case-item">
                                                 <div class="row">
@@ -378,7 +383,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <h6 class="case-item__title text-center"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
+                                                        <h6 class=" text-center"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a>
                                                         </h6>
                                                     </div>
                                                 </div>

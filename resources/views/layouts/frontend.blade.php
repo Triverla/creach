@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 
     <!--Plugins styles-->
+    <!--TODO css not working-->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/jquery.mCustomScrollbar.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/swiper.min.css') }}">
