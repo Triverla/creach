@@ -264,7 +264,7 @@ class PostsController extends Controller
             $comment->email = $email;
             if ($comment->save()) {
                 $response['code'] = 200;
-                $html = View::make('single', compact('post', 'comment'));
+                $html = View::make('includes.single_comment', compact('post', 'comment'));
                 $response['comment'] = $html->render();
                 $html = View::make('includes.comments_title', compact('post', 'comment'));
                 $response['comments_title'] = $html->render();
@@ -289,7 +289,7 @@ class PostsController extends Controller
             $comment->email = Auth::user()->email;
             if ($comment->save()) {
                 $response['code'] = 200;
-                $html = View::make('single', compact('post', 'comment'));
+                $html = View::make('includes.single_comment', compact('post', 'comment'));
                 $response['comment'] = $html->render();
                 $html = View::make('includes.comments_title', compact('post', 'comment'));
                 $response['comments_title'] = $html->render();
@@ -314,7 +314,7 @@ class PostsController extends Controller
             if ($post_comment->comment_user_id == Auth::id() || $post_comment->post->user_id == Auth::id()) {
                 if ($post_comment->delete()) {
                     $response['code'] = 200;
-                    $html = View::make('widgets.post_detail.comments_title', compact('post'));
+                    $html = View::make('includes.comments_title', compact('post'));
                     $response['comments_title'] = $html->render();
                 }
             }
