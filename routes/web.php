@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/offline', function () {
+	return view('offline');
+});
 Route::post('/subscribe', function () {
 
 	$email = request('email');

@@ -3,6 +3,14 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Creach">
+    <meta name="apple-mobile-web-app-title" content="Creach">
+    <meta name="theme-color" content="#FF9800">
+    <meta name="msapplication-navbutton-color" content="#FF9800">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
     <title>{{ $title }}</title>
 
 
@@ -149,20 +157,6 @@
     var REQUEST_URL = "<?=Request::url()?>";
     var CSRF = "{{ csrf_token() }}";
 </script>
-<script type="text/javascript">
-    // Initialize the service worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js', {
-            scope: '.' 
-        }).then(function (registration) {
-            // Registration was successful
-            console.log('CREACH PWA: ServiceWorker registration successful with scope: ', registration.scope);
-        }, function (err) {
-            // registration failed :(
-            console.log('CREACH PWA: ServiceWorker registration failed: ', err);
-        });
-    }
-</script>
 
 <script src="{{ asset('app/js/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('app/js/crum-mega-menu.js') }}"></script>
@@ -187,7 +181,6 @@
           @endif
           
     </script>
-    
 
 </body>
 </html>

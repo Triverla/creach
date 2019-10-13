@@ -10,7 +10,7 @@ var precacheConfig = [
         '/uploads/**/*',
         '/data/**/*'
     ],
-    cacheName = "creach-v1--" + (self.registration ? self.registration.scope : ""),
+    cacheName = "sw-precache-v3--" + (self.registration ? self.registration.scope : ""),
     ignoreUrlParametersMatching = [/^utm_/],
     addDirectoryIndex = function(e, t) {
         var n = new URL(e);
@@ -198,27 +198,14 @@ self.addEventListener("install", function(e) {
                             fetchAndCache: function(e, t) {
                                 var n = (t = t || {}).successResponses || i.successResponses;
                                 return fetch(e.clone()).then(function(r) {
-                                    return "GET" === e.method && n.test(r.status) && a(t).then(function(n) {
-                                        n.put(e, r).then(function() {
-                                            var r = t.cache || i.cache;
-                                            (r.maxEntries || r.maxAgeSeconds) && r.name && function(e, t, n) {
-                                                var r = o.bind(null, e, t, n);
-                                                s = s ? s.then(r) : r()
-                                            }(e, n, r)
-                                        })
-                                    }), r.clone()
+                                    return "GET" === e.method && n.test(r.status) && a(t).then(function(n) { n.put(e, r).then(function() { var r = t.cache || i.cache;
+                                            (r.maxEntries || r.maxAgeSeconds) && r.name && function(e, t, n) { var r = o.bind(null, e, t, n);
+                                                s = s ? s.then(r) : r() }(e, n, r) }) }), r.clone()
                                 })
                             },
                             openCache: a,
-                            renameCache: function(e, t, n) {
-                                return r("Renaming cache: [" + e + "] to [" + t + "]", n), caches.delete(t).then(function() {
-                                    return Promise.all([caches.open(e), caches.open(t)]).then(function(t) {
-                                        var n = t[0],
-                                            r = t[1];
-                                        return n.keys().then(function(e) { return Promise.all(e.map(function(e) { return n.match(e).then(function(t) { return r.put(e, t) }) })) }).then(function() { return caches.delete(e) })
-                                    })
-                                })
-                            },
+                            renameCache: function(e, t, n) { return r("Renaming cache: [" + e + "] to [" + t + "]", n), caches.delete(t).then(function() { return Promise.all([caches.open(e), caches.open(t)]).then(function(t) { var n = t[0],
+                                            r = t[1]; return n.keys().then(function(e) { return Promise.all(e.map(function(e) { return n.match(e).then(function(t) { return r.put(e, t) }) })) }).then(function() { return caches.delete(e) }) }) }) },
                             cache: function(e, t) { return a(t).then(function(t) { return t.add(e) }) },
                             uncache: function(e, t) { return a(t).then(function(t) { return t.delete(e) }) },
                             precache: function(e) { e instanceof Promise || c(e), i.preCacheItems = i.preCacheItems.concat(e) },
@@ -295,16 +282,9 @@ self.addEventListener("install", function(e) {
                                             u = i.objectStore(o),
                                             f = u.index(s),
                                             h = f.count();
-                                        f.count().onsuccess = function() {
-                                            var e = h.result;
-                                            e > t && (f.openCursor().onsuccess = function(n) {
-                                                var r = n.target.result;
-                                                if (r) {
-                                                    var o = r.value[c];
-                                                    a.push(o), u.delete(o), e - a.length > t && r.continue()
-                                                }
-                                            })
-                                        }, i.oncomplete = function() { n(a) }, i.onabort = r
+                                        f.count().onsuccess = function() { var e = h.result;
+                                            e > t && (f.openCursor().onsuccess = function(n) { var r = n.target.result; if (r) { var o = r.value[c];
+                                                    a.push(o), u.delete(o), e - a.length > t && r.continue() } }) }, i.oncomplete = function() { n(a) }, i.onabort = r
                                     }) : Promise.resolve([])
                                 }(e, t).then(function(e) { return n.concat(e) })
                             })
@@ -683,24 +663,9 @@ self.addEventListener("install", function(e) {
                         for (var t = new Array(e.length),
                                 n = 0; n < e.length; n++) "object" == typeof e[n] && (t[n] = new RegExp("^(?:" + e[n].pattern + ")$"));
                         return function(n, r) {
-                            for (var c = "", s = n || {}, i = (r || {}).pretty ? a : encodeURIComponent, u = 0; u < e.length; u++) {
-                                var f = e[u];
-                                if ("string" != typeof f) {
-                                    var h, p = s[f.name];
-                                    if (null == p) { if (f.optional) { f.partial && (c += f.prefix); continue } throw new TypeError('Expected "' + f.name + '" to be defined') }
-                                    if (d(p)) {
-                                        if (!f.repeat) throw new TypeError('Expected "' + f.name + '" to not repeat, but received `' + JSON.stringify(p) + "`");
-                                        if (0 === p.length) { if (f.optional) continue; throw new TypeError('Expected "' + f.name + '" to not be empty') }
-                                        for (var l = 0; l < p.length; l++) {
-                                            if (h = i(p[l]), !t[u].test(h)) throw new TypeError('Expected all "' + f.name + '" to match "' + f.pattern + '", but received `' + JSON.stringify(h) + "`");
-                                            c += (0 === l ? f.prefix : f.delimiter) + h
-                                        }
-                                    } else {
-                                        if (h = f.asterisk ? o(p) : i(p), !t[u].test(h)) throw new TypeError('Expected "' + f.name + '" to match "' + f.pattern + '", but received "' + h + '"');
-                                        c += f.prefix + h
-                                    }
-                                } else c += f
-                            }
+                            for (var c = "", s = n || {}, i = (r || {}).pretty ? a : encodeURIComponent, u = 0; u < e.length; u++) { var f = e[u]; if ("string" != typeof f) { var h, p = s[f.name]; if (null == p) { if (f.optional) { f.partial && (c += f.prefix); continue } throw new TypeError('Expected "' + f.name + '" to be defined') } if (d(p)) { if (!f.repeat) throw new TypeError('Expected "' + f.name + '" to not repeat, but received `' + JSON.stringify(p) + "`"); if (0 === p.length) { if (f.optional) continue; throw new TypeError('Expected "' + f.name + '" to not be empty') } for (var l = 0; l < p.length; l++) { if (h = i(p[l]), !t[u].test(h)) throw new TypeError('Expected all "' + f.name + '" to match "' + f.pattern + '", but received `' + JSON.stringify(h) + "`");
+                                            c += (0 === l ? f.prefix : f.delimiter) + h } } else { if (h = f.asterisk ? o(p) : i(p), !t[u].test(h)) throw new TypeError('Expected "' + f.name + '" to match "' + f.pattern + '", but received "' + h + '"');
+                                        c += f.prefix + h } } else c += f }
                             return c
                         }
                     }
@@ -713,47 +678,23 @@ self.addEventListener("install", function(e) {
 
                     function f(e) { return e.sensitive ? "" : "i" }
 
-                    function h(e, t, n) {
-                        d(t) || (n = t || n, t = []);
-                        for (var r = (n = n || {}).strict, a = !1 !== n.end, o = "", c = 0; c < e.length; c++) {
-                            var i = e[c];
-                            if ("string" == typeof i) o += s(i);
-                            else {
-                                var h = s(i.prefix),
+                    function h(e, t, n) { d(t) || (n = t || n, t = []); for (var r = (n = n || {}).strict, a = !1 !== n.end, o = "", c = 0; c < e.length; c++) { var i = e[c]; if ("string" == typeof i) o += s(i);
+                            else { var h = s(i.prefix),
                                     p = "(?:" + i.pattern + ")";
-                                t.push(i), i.repeat && (p += "(?:" + h + p + ")*"), o += p = i.optional ? i.partial ? h + "(" + p + ")?" : "(?:" + h + "(" + p + "))?" : h + "(" + p + ")"
-                            }
-                        }
-                        var l = s(n.delimiter || "/"),
-                            g = o.slice(-l.length) === l;
-                        return r || (o = (g ? o.slice(0, -l.length) : o) + "(?:" + l + "(?=$))?"), o += a ? "$" : r && g ? "" : "(?=" + l + "|$)", u(new RegExp("^" + o, f(n)), t)
-                    }
+                                t.push(i), i.repeat && (p += "(?:" + h + p + ")*"), o += p = i.optional ? i.partial ? h + "(" + p + ")?" : "(?:" + h + "(" + p + "))?" : h + "(" + p + ")" } } var l = s(n.delimiter || "/"),
+                            g = o.slice(-l.length) === l; return r || (o = (g ? o.slice(0, -l.length) : o) + "(?:" + l + "(?=$))?"), o += a ? "$" : r && g ? "" : "(?=" + l + "|$)", u(new RegExp("^" + o, f(n)), t) }
 
-                    function p(e, t, n) {
-                        return d(t) || (n = t || n, t = []), n = n || {}, e instanceof RegExp ? function(e, t) {
-                            var n = e.source.match(/\((?!\?)/g);
-                            if (n)
-                                for (var r = 0; r < n.length; r++) t.push({ name: r, prefix: null, delimiter: null, optional: !1, repeat: !1, partial: !1, asterisk: !1, pattern: null });
-                            return u(e, t)
-                        }(e, t) : d(e) ? function(e, t, n) { for (var r = [], a = 0; a < e.length; a++) r.push(p(e[a], t, n).source); return u(new RegExp("(?:" + r.join("|") + ")", f(n)), t) }(e, t, n) : function(e, t, n) { return h(r(e, n), t, n) }(e, t, n)
-                    }
+                    function p(e, t, n) { return d(t) || (n = t || n, t = []), n = n || {}, e instanceof RegExp ? function(e, t) { var n = e.source.match(/\((?!\?)/g); if (n)
+                                for (var r = 0; r < n.length; r++) t.push({ name: r, prefix: null, delimiter: null, optional: !1, repeat: !1, partial: !1, asterisk: !1, pattern: null }); return u(e, t) }(e, t) : d(e) ? function(e, t, n) { for (var r = [], a = 0; a < e.length; a++) r.push(p(e[a], t, n).source); return u(new RegExp("(?:" + r.join("|") + ")", f(n)), t) }(e, t, n) : function(e, t, n) { return h(r(e, n), t, n) }(e, t, n) }
                     var d = e("isarray");
                     t.exports = p, t.exports.parse = r, t.exports.compile = function(e, t) { return c(r(e, t)) }, t.exports.tokensToFunction = c, t.exports.tokensToRegExp = h;
                     var l = new RegExp(["(\\\\.)", "([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))"].join("|"), "g")
                 }, { isarray: 14 }],
-                16: [function(e, t, n) {
-                    ! function() {
-                        var e = Cache.prototype.addAll,
-                            t = navigator.userAgent.match(/(Firefox|Chrome)\/(\d+\.)/);
-                        if (t) var n = t[1],
+                16: [function(e, t, n) {! function() { var e = Cache.prototype.addAll,
+                            t = navigator.userAgent.match(/(Firefox|Chrome)\/(\d+\.)/); if (t) var n = t[1],
                             r = parseInt(t[2]);
                         e && (!t || "Firefox" === n && r >= 46 || "Chrome" === n && r >= 50) || (Cache.prototype.addAll = function(e) {
-                            function t(e) { this.name = "NetworkError", this.code = 19, this.message = e }
-                            var n = this;
-                            return t.prototype = Object.create(Error.prototype), Promise.resolve().then(function() { if (arguments.length < 1) throw new TypeError; return e = e.map(function(e) { return e instanceof Request ? e : String(e) }), Promise.all(e.map(function(e) { "string" == typeof e && (e = new Request(e)); var n = new URL(e.url).protocol; if ("http:" !== n && "https:" !== n) throw new t("Invalid scheme"); return fetch(e.clone()) })) }).then(function(r) { if (r.some(function(e) { return !e.ok })) throw new t("Incorrect response status"); return Promise.all(r.map(function(t, r) { return n.put(e[r], t) })) }).then(function() {})
-                        }, Cache.prototype.add = function(e) { return this.addAll([e]) })
-                    }()
-                }, {}]
+                            function t(e) { this.name = "NetworkError", this.code = 19, this.message = e } var n = this; return t.prototype = Object.create(Error.prototype), Promise.resolve().then(function() { if (arguments.length < 1) throw new TypeError; return e = e.map(function(e) { return e instanceof Request ? e : String(e) }), Promise.all(e.map(function(e) { "string" == typeof e && (e = new Request(e)); var n = new URL(e.url).protocol; if ("http:" !== n && "https:" !== n) throw new t("Invalid scheme"); return fetch(e.clone()) })) }).then(function(r) { if (r.some(function(e) { return !e.ok })) throw new t("Incorrect response status"); return Promise.all(r.map(function(t, r) { return n.put(e[r], t) })) }).then(function() {}) }, Cache.prototype.add = function(e) { return this.addAll([e]) }) }() }, {}]
             }, {}, [13])(13)
     }),
     toolbox.router.get(/\/images\/.*/, toolbox.networkFirst, {
